@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Katri's to do list</title>
+    <style media="screen">
+    .completed {
+        text-decoration: line-through;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app"><h1>{{title}}</h1>
+    <todo-header></todo-header>
+    <ul v-highlight-on-change>
+        <!--Same as :class="{completed: item.completed} for the ternary-->
+      <!--  <li v-for="item in list" :class="item.completed ? 'completed' : 'incomplete' " @click="item.completed =! item.completed" >{{item.name}}
+            
+        </li>-->
+        <todo-item v-for="item in list" v-bind:key="item.id" :todo="item"></todo-item>
+    </ul>
+    <!-- Short hand v-on:click is the same as @click-->
+<button type="button" name="button"  v-on:click="list.pop()">Delete last task</button>
+<input type="text" name="" value="" @click.stop="" v-model="newItem" @keyup.enter="addToList(newItem)">
+<button type="button" name="button" @click.stop="list.push({name: newItem, completed:false})">Add new</button>
+
+<p>{{toDoAmount}}</p>
+
+<button type="button" name="button" @click="getAnswer">Is this fun?</button>
+<h6>{{answer}}</h6>
+<img :src="image" alt="">
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="basic.js"></script>
+    
+
+    
+</body>
+</html>
